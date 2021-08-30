@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Menu</title>
+
+</head>
+<body>
+<div th:fragment="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/index}"> Главная </a></li>
+                <li><a th:href="@{/duration}"> Статистика  </a></li>
+                <li><a th:href="@{/allowance}"> Норма выработки </a></li>
+                <li><a th:href="@{/rating}"> Рейтинг </a></li>
+                <li><a th:href="@{/diagram}"> Диаграмма </a></li>
+                <li><a th:href="@{/award}"> Заработная плата </a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" th:if="${user.role == 'ADMIN'}">Администрирование<span
+                        class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/all}" th:if="${user.role == 'ADMIN'}"> Все структуры </a></li>
+                        <li><a th:href="@{/active}" th:if="${user.role == 'ADMIN'}"> Сотрудники на рабочем месте </a></li>
+                        <li><a th:href="@{/notComeToday}" th:if="${user.role == 'ADMIN'}"> Прогулы </a></li>
+                        <li><a th:href="@{/latecomers}" th:if="${user.role == 'ADMIN'}"> Опаздавшие </a></li>
+                        <li><a th:href="@{/notWorkList}" th:if="${user.role == 'ADMIN'}"> Сотрудники не на рабочем месте </a></li>
+                        <li><a th:href="@{/sumAward}" th:if="${user.role == 'ADMIN'}"> Выплаты предприятия </a></li>
+                        <li><a th:href="@{/addEmployee}" th:if="${user.role == 'ADMIN'}"> Добовление нового сотрудника </a></li>
+                        <li><a th:href="@{/departments}" th:if="${user.role == 'ADMIN'}"> Список отделов </a></li>
+                        <li><a th:href="@{/jobPositions}" th:if="${user.role == 'ADMIN'}"> Список должностей </a></li>
+                        <li><a th:href="@{/weeklyReports}" th:if="${user.role == 'ADMIN'}"> Еженедельный отчет по отделам </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/beforeLogOut}"><span class="glyphicon glyphicon-log-out"></span> Выход </a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
